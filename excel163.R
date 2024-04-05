@@ -1,4 +1,4 @@
-values <- c(18,	35,	29,	18,	55,	28,	25,	34,
+age <- c(18,	35,	29,	18,	55,	28,	25,	34,
             50,	19,	44,	35,	25,	52,	20,	42,
             37,	27,	50,	22,	39,	60,	49,	41,
             21,	59,	28,	46,	43,	38,	52,	43,
@@ -7,6 +7,13 @@ summary(values)
 m <- mean(values)
 s <- sd(values)
 var(values)
+age_ranges <- cut(age, breaks = c(0, 20, 30, 40, 50, 60),
+                  labels = c("[0-20]", "[21-30]", "[31-40]", "[41-50]", "[51-60]"))
+age_counts <- table(age_ranges)
+pie(age_counts, labels = paste(names(age_counts)))
+
+
+
 data_within_1sd <- values[abs(values - m) < s]
 data_within_1sd
 
